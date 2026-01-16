@@ -1,0 +1,525 @@
+
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>업무 담당자 연락처</title>
+        <style>
+            body { font-family: 'Malgun Gothic', sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; color: #333; }
+            h1 { text-align: center; color: #004085; border-bottom: 2px solid #004085; padding-bottom: 10px; font-size: 1.5rem; }
+            .guide { text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+            .menu-box { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; }
+            .menu-item { display: block; padding: 15px; border-bottom: 1px solid #eee; text-decoration: none; color: inherit; }
+            .menu-item:last-child { border-bottom: none; }
+            .menu-item:active { background-color: #e9ecef; }
+            .item-title { font-weight: bold; color: #0056b3; font-size: 1.1rem; margin-bottom: 5px; }
+            .item-desc { font-size: 0.85rem; color: #555; }
+            .detail-page { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f2f5; z-index: 100; padding: 20px; box-sizing: border-box; overflow-y: auto; }
+            .detail-page:target { display: block; }
+            .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 20px; }
+            .card h2 { margin-top: 0; color: #0056b3; font-size: 1.3rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+            dt { font-weight: bold; margin-top: 15px; color: #333; }
+            dd { margin: 5px 0 0 0; color: #555; word-break: break-all; }
+            .btn-back { display: block; width: 100%; padding: 15px; margin-top: 20px; background: #6c757d; color: white; text-align: center; text-decoration: none; border-radius: 10px; font-weight: bold; box-sizing: border-box; }
+        </style>
+    </head>
+    <body>
+        <h1>📋 담당자 및 업무 분장</h1>
+        <p class="guide">아래 목록에서 업무를 선택하세요.</p>
+        <div class="menu-box">
+    
+            <a href="#detail_0" class="menu-item">
+                <div class="item-title">변경관리</div>
+                <div class="item-desc">변경 절차 안내 및 영향 평가 승인</div>
+            </a>
+        
+            <a href="#detail_1" class="menu-item">
+                <div class="item-title">일탈 및 이벤트 관리</div>
+                <div class="item-desc">발생 보고 접수 및 위험 등급 분류</div>
+            </a>
+        
+            <a href="#detail_2" class="menu-item">
+                <div class="item-title">CAPA</div>
+                <div class="item-desc">시정 및 예방조치 계획/유효성 검토</div>
+            </a>
+        
+            <a href="#detail_3" class="menu-item">
+                <div class="item-title">적격성평가</div>
+                <div class="item-desc">장비·시설 검증 및 프로토콜 승인</div>
+            </a>
+        
+            <a href="#detail_4" class="menu-item">
+                <div class="item-title">공정 밸리데이션</div>
+                <div class="item-desc">제조 공정 검증 및 보고서 검토</div>
+            </a>
+        
+            <a href="#detail_5" class="menu-item">
+                <div class="item-title">세척 밸리데이션</div>
+                <div class="item-desc">세척 잔류물 검증 및 허용기준 설정</div>
+            </a>
+        
+            <a href="#detail_6" class="menu-item">
+                <div class="item-title">제조 및 포장기록서</div>
+                <div class="item-desc">기록서 발행 및 검토·승인 문의</div>
+            </a>
+        
+            <a href="#detail_7" class="menu-item">
+                <div class="item-title">완제품 시험</div>
+                <div class="item-desc">제품 출하 시험 및 결과 판정</div>
+            </a>
+        
+            <a href="#detail_8" class="menu-item">
+                <div class="item-title">원료 시험</div>
+                <div class="item-desc">입고 원료 품질 적합성 시험</div>
+            </a>
+        
+            <a href="#detail_9" class="menu-item">
+                <div class="item-title">자재 시험</div>
+                <div class="item-desc">포장재 등 부자재 품질 점검</div>
+            </a>
+        
+            <a href="#detail_10" class="menu-item">
+                <div class="item-title">안정성 시험</div>
+                <div class="item-desc">기간별 품질 변화 및 유효기간 확인</div>
+            </a>
+        
+            <a href="#detail_11" class="menu-item">
+                <div class="item-title">계정 및 비밀번호</div>
+                <div class="item-desc">시스템 계정 생성 및 권한 부여·잠금 해제</div>
+            </a>
+        
+            <a href="#detail_12" class="menu-item">
+                <div class="item-title">표준시간관리</div>
+                <div class="item-desc">서버/장비 시간 동기화 및 오차 조정</div>
+            </a>
+        
+            <a href="#detail_13" class="menu-item">
+                <div class="item-title">Audit trail</div>
+                <div class="item-desc">데이터 수정 기록 검토 및 DI 점검</div>
+            </a>
+        
+            <a href="#detail_14" class="menu-item">
+                <div class="item-title">백업 및 복구</div>
+                <div class="item-desc">데이터 백업 상태 확인 및 복구 지원</div>
+            </a>
+        
+            <a href="#detail_15" class="menu-item">
+                <div class="item-title">log book</div>
+                <div class="item-desc">수기 기록 대장 관리 및 관리 번호 부여</div>
+            </a>
+        
+            <a href="#detail_16" class="menu-item">
+                <div class="item-title">OOS</div>
+                <div class="item-desc">시험 결과 이상 발생 시 보고 및 원인조사</div>
+            </a>
+        
+            <a href="#detail_17" class="menu-item">
+                <div class="item-title">시약 및 표준품</div>
+                <div class="item-desc">시약 유효기간 확인 및 표준품 분양 문의</div>
+            </a>
+        
+            <a href="#detail_18" class="menu-item">
+                <div class="item-title">교정</div>
+                <div class="item-desc">계측기 교정 주기 확인 및 이상 점검</div>
+            </a>
+        
+            <a href="#detail_19" class="menu-item">
+                <div class="item-title">환경 모니터링</div>
+                <div class="item-desc">작업장 청정도 이상 및 모니터링 결과 문의</div>
+            </a>
+        
+            <a href="#detail_20" class="menu-item">
+                <div class="item-title">교육 및 훈련</div>
+                <div class="item-desc">직무 교육 이수 확인</div>
+            </a>
+        
+            <a href="#detail_21" class="menu-item">
+                <div class="item-title">SOP 및 지침서</div>
+                <div class="item-desc">최신본 확인 및 현장 비치용 출력 요청</div>
+            </a>
+        
+            <a href="#detail_22" class="menu-item">
+                <div class="item-title">마스터 데이터 관리</div>
+                <div class="item-desc">시스템(LIMS/ERP 등) 기초 정보 수정 요청</div>
+            </a>
+        
+            <a href="#detail_23" class="menu-item">
+                <div class="item-title">폐기물/위험물 관리</div>
+                <div class="item-desc">시험 후 잔여 검체 및 유해 화학물질 폐기 방법</div>
+            </a>
+        
+            <a href="#detail_24" class="menu-item">
+                <div class="item-title">수기기록 관리</div>
+                <div class="item-desc">기록지 오기 시 정정 방법</div>
+            </a>
+        
+            <a href="#detail_25" class="menu-item">
+                <div class="item-title">돌발 상황</div>
+                <div class="item-desc">제조를 지원하는 장비 및 시스템, 유틸리티 이상 발생</div>
+            </a>
+        </div>
+        <div id="detail_0" class="detail-page">
+            <div class="card">
+                <h2>변경관리</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>변경 절차 안내 및 영향 평가 승인</dd>
+                    <dt>담당 부서</dt><dd>QA(문서)</dd>
+                    <dt>담당자</dt><dd>이아영</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_1" class="detail-page">
+            <div class="card">
+                <h2>일탈 및 이벤트 관리</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>발생 보고 접수 및 위험 등급 분류</dd>
+                    <dt>담당 부서</dt><dd>QA(문서)</dd>
+                    <dt>담당자</dt><dd>김현지</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_2" class="detail-page">
+            <div class="card">
+                <h2>CAPA</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>시정 및 예방조치 계획/유효성 검토</dd>
+                    <dt>담당 부서</dt><dd>QA(문서)</dd>
+                    <dt>담당자</dt><dd>김현지</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_3" class="detail-page">
+            <div class="card">
+                <h2>적격성평가</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>장비·시설 검증 및 프로토콜 승인</dd>
+                    <dt>담당 부서</dt><dd>QA(밸리데이션)</dd>
+                    <dt>담당자</dt><dd>김도영, 정의재</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_4" class="detail-page">
+            <div class="card">
+                <h2>공정 밸리데이션</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>제조 공정 검증 및 보고서 검토</dd>
+                    <dt>담당 부서</dt><dd>QA(밸리데이션)</dd>
+                    <dt>담당자</dt><dd>김도영, 정의재</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_5" class="detail-page">
+            <div class="card">
+                <h2>세척 밸리데이션</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>세척 잔류물 검증 및 허용기준 설정</dd>
+                    <dt>담당 부서</dt><dd>QA(밸리데이션)</dd>
+                    <dt>담당자</dt><dd>김도영, 정의재</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_6" class="detail-page">
+            <div class="card">
+                <h2>제조 및 포장기록서</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>기록서 발행 및 검토·승인 문의</dd>
+                    <dt>담당 부서</dt><dd>QA(문서)</dd>
+                    <dt>담당자</dt><dd>문지영</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_7" class="detail-page">
+            <div class="card">
+                <h2>완제품 시험</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>제품 출하 시험 및 결과 판정</dd>
+                    <dt>담당 부서</dt><dd>QC</dd>
+                    <dt>담당자</dt><dd>염동우</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_8" class="detail-page">
+            <div class="card">
+                <h2>원료 시험</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>입고 원료 품질 적합성 시험</dd>
+                    <dt>담당 부서</dt><dd>QC</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_9" class="detail-page">
+            <div class="card">
+                <h2>자재 시험</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>포장재 등 부자재 품질 점검</dd>
+                    <dt>담당 부서</dt><dd>QC</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_10" class="detail-page">
+            <div class="card">
+                <h2>안정성 시험</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>기간별 품질 변화 및 유효기간 확인</dd>
+                    <dt>담당 부서</dt><dd>QC</dd>
+                    <dt>담당자</dt><dd>조현우</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_11" class="detail-page">
+            <div class="card">
+                <h2>계정 및 비밀번호</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>시스템 계정 생성 및 권한 부여·잠금 해제</dd>
+                    <dt>담당 부서</dt><dd>QA(DI)</dd>
+                    <dt>담당자</dt><dd>고용일, 김예찬</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_12" class="detail-page">
+            <div class="card">
+                <h2>표준시간관리</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>서버/장비 시간 동기화 및 오차 조정</dd>
+                    <dt>담당 부서</dt><dd>QA(DI)</dd>
+                    <dt>담당자</dt><dd>고용일, 김예찬</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_13" class="detail-page">
+            <div class="card">
+                <h2>Audit trail</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>데이터 수정 기록 검토 및 DI 점검</dd>
+                    <dt>담당 부서</dt><dd>QA(DI)</dd>
+                    <dt>담당자</dt><dd>고용일, 김예찬</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_14" class="detail-page">
+            <div class="card">
+                <h2>백업 및 복구</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>데이터 백업 상태 확인 및 복구 지원</dd>
+                    <dt>담당 부서</dt><dd>QA(DI)</dd>
+                    <dt>담당자</dt><dd>고용일, 김예찬</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_15" class="detail-page">
+            <div class="card">
+                <h2>log book</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>수기 기록 대장 관리 및 관리 번호 부여</dd>
+                    <dt>담당 부서</dt><dd>QA(문서)</dd>
+                    <dt>담당자</dt><dd>김윤아</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_16" class="detail-page">
+            <div class="card">
+                <h2>OOS</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>시험 결과 이상 발생 시 보고 및 원인조사</dd>
+                    <dt>담당 부서</dt><dd>QC</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_17" class="detail-page">
+            <div class="card">
+                <h2>시약 및 표준품</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>시약 유효기간 확인 및 표준품 분양 문의</dd>
+                    <dt>담당 부서</dt><dd>QC</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_18" class="detail-page">
+            <div class="card">
+                <h2>교정</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>계측기 교정 주기 확인 및 이상 점검</dd>
+                    <dt>담당 부서</dt><dd>QA</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_19" class="detail-page">
+            <div class="card">
+                <h2>환경 모니터링</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>작업장 청정도 이상 및 모니터링 결과 문의</dd>
+                    <dt>담당 부서</dt><dd>QC</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_20" class="detail-page">
+            <div class="card">
+                <h2>교육 및 훈련</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>직무 교육 이수 확인</dd>
+                    <dt>담당 부서</dt><dd>QA</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_21" class="detail-page">
+            <div class="card">
+                <h2>SOP 및 지침서</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>최신본 확인 및 현장 비치용 출력 요청</dd>
+                    <dt>담당 부서</dt><dd>QA(문서)</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_22" class="detail-page">
+            <div class="card">
+                <h2>마스터 데이터 관리</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>시스템(LIMS/ERP 등) 기초 정보 수정 요청</dd>
+                    <dt>담당 부서</dt><dd>QA(DI)</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_23" class="detail-page">
+            <div class="card">
+                <h2>폐기물/위험물 관리</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>시험 후 잔여 검체 및 유해 화학물질 폐기 방법</dd>
+                    <dt>담당 부서</dt><dd>관리팀</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_24" class="detail-page">
+            <div class="card">
+                <h2>수기기록 관리</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>기록지 오기 시 정정 방법</dd>
+                    <dt>담당 부서</dt><dd>QA(문서)</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        
+        <div id="detail_25" class="detail-page">
+            <div class="card">
+                <h2>돌발 상황</h2>
+                <dl>
+                    <dt>담당 업무</dt><dd>제조를 지원하는 장비 및 시스템, 유틸리티 이상 발생</dd>
+                    <dt>담당 부서</dt><dd>관리팀</dd>
+                    <dt>담당자</dt><dd>담당자 미정</dd>
+                    <dt>내선번호</dt><dd>1234</dd>
+                    <dt>이메일</dt><dd>@</dd>
+                </dl>
+                <a href="#" class="btn-back">목록으로 돌아가기</a>
+            </div>
+        </div>
+        </body></html>
